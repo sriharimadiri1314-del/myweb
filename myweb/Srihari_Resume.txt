@@ -1,0 +1,55 @@
+SRIHARI
+B.Tech Student - Computer Science & Engineering
+Email: srihari@example.com | Phone: +91 98765 43210
+GitHub: github.com/srihari | LinkedIn: linkedin.com/in/srihari
+Portfolio: username.github.io
+
+--------------------------------------------------------------------------------
+PROFESSIONAL SUMMARY
+Passionate and detail-oriented B.Tech Computer Science and Engineering student 
+with a strong foundation in modern web development, programming languages, and 
+machine learning techniques. Adept at building interactive, responsive web applications
+and exploring data-driven solutions to real-world challenges.
+
+--------------------------------------------------------------------------------
+EDUCATION
+Bachelor of Technology in Computer Science & Engineering
+Expected Graduation: 2028
+Current GPA: 8.5/10.0 (or equivalent)
+
+--------------------------------------------------------------------------------
+TECHNICAL SKILLS
+- Languages: Python, Java, JavaScript, HTML5, CSS3, SQL
+- Libraries & Frameworks: Node.js, React.js, Express, Scikit-Learn, Pandas
+- Developer Tools: Git, GitHub, VS Code, AWS (EC2, S3), Netlify
+- Design: Glassmorphism, Responsive UI/UX design
+
+--------------------------------------------------------------------------------
+PROJECTS
+
+1. Student Management System
+   - Designed a full-stack student management application using React.js and Node.js.
+   - Built a secure login system and result portal using SQL for database handling.
+   - Implemented dynamic data grids and data visualisations for performance tracking.
+
+2. Machine Learning Predictor
+   - Created a Python-based predictive modeling system using Scikit-Learn.
+   - Performed data preprocessing, cleaning, and feature scaling on custom datasets.
+   - Achieved 92% accuracy on regression and classification targets using Random Forest.
+
+3. Personal Glassmorphism Portfolio
+   - Developed a responsive, premium personal branding portfolio website.
+   - Integrated custom interactive particle canvas backgrounds and dark/light themes.
+   - Optimized loading performance and hosted on GitHub Pages with free SSL.
+
+--------------------------------------------------------------------------------
+ACHIEVEMENTS & TIMELINE
+- 2024: Started B.Tech Computer Science and Engineering.
+- 2025: Built and deployed multiple web projects, mastering frontend frameworks.
+- 2026: Explored Machine Learning and built predictive models in Python.
+
+--------------------------------------------------------------------------------
+CERTIFICATIONS
+- AWS Certified Cloud Practitioner
+- Python for Data Science and Machine Learning (Coursera)
+- Meta Front-End Developer Professional Certificate (Coursera)
