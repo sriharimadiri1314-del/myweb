@@ -8,57 +8,46 @@ AOS.init({
     offset: 100
 });
 // EmailJS configuration and initialization
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-const EMAILJS_SERVICE_ID = "SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "TEMPLATE_ID";
-
-if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-}
-
+const EMAILJS_PUBLIC_KEY = "SxwrU-bxla0acLvhe";
+const EMAILJS_SERVICE_ID = "service_k6oz9cu";
+const EMAILJS_TEMPLATE_ID = "template_yylumol";
+// Initialize EmailJS with v4 options object
+emailjs.init({
+    publicKey: EMAILJS_PUBLIC_KEY
+});
 const contactForm = document.querySelector("form");
 if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
-
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn ? submitBtn.textContent : "Send Message";
-
         if (submitBtn) {
             submitBtn.disabled = true;
             submitBtn.textContent = "Sending...";
         }
-
         const nameVal = contactForm.querySelector('input[type="text"]').value;
         const emailVal = contactForm.querySelector('input[type="email"]').value;
         const messageVal = contactForm.querySelector('textarea').value;
-
-        // Determine if credentials are still placeholder values
-        const isPlaceholder = (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY" || 
-                               EMAILJS_SERVICE_ID === "SERVICE_ID" || 
-                               EMAILJS_TEMPLATE_ID === "TEMPLATE_ID");
-
-        if (isPlaceholder) {
-            // Simulate submission process for sandbox/testing
-            setTimeout(() => {
-                alert("Message Sent (Simulation): Thank you, " + nameVal + "! Your message was processed successfully. Please configure your actual EmailJS credentials in script.js to receive live emails.");
-                contactForm.reset();
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalBtnText;
-                }
-            }, 1500);
-        } else {
-            // Live EmailJS send
-            emailjs.send(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                {
-                    name: nameVal,
-                    email: emailVal,
-                    message: messageVal
-                }
-            )
+        console.log("Attempting to send email via EmailJS with:", {
+            publicKey: EMAILJS_PUBLIC_KEY,
+            serviceId: EMAILJS_SERVICE_ID,
+            templateId: EMAILJS_TEMPLATE_ID
+        });
+        // Live EmailJS send
+        emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            {
+                name: nameVal,
+                from_name: nameVal,   // Compatibility for default templates
+                email: emailVal,
+                reply_to: emailVal,   // Compatibility for default templates
+                message: messageVal
+            },
+            {
+                publicKey: EMAILJS_PUBLIC_KEY
+            }
+        )
             .then(() => {
                 alert("Message Sent Successfully!");
                 contactForm.reset();
@@ -73,43 +62,30 @@ if (contactForm) {
                     submitBtn.textContent = originalBtnText;
                 }
             });
-        }
     });
 }
 // ==============================
 // TYPING EFFECT
 // ==============================
-
 const typingElement = document.querySelector(".typing-text");
-
 const roles = [
     "Frontend Developer",
     "Web Designer",
     "Problem Solver",
     "Tech Enthusiast"
 ];
-
 let roleIndex = 0;
 let charIndex = 0;
 let deleting = false;
-
 function typeEffect() {
-
     const currentRole = roles[roleIndex];
-
     if (!deleting) {
-
         typingElement.textContent =
             currentRole.substring(0, charIndex + 1);
-
         charIndex++;
-
         if (charIndex === currentRole.length) {
-
             deleting = true;
-
             setTimeout(typeEffect, 1500);
-
             return;
         }
 
@@ -137,9 +113,7 @@ function typeEffect() {
         deleting ? 60 : 120
     );
 }
-
 typeEffect();
-
 
 // ==============================
 // PARTICLES JS
@@ -446,4 +420,4 @@ cards.forEach(card => {
 // ==============================
 // FADE IN PAGE
 // ==============================
-
+
