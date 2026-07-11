@@ -22,11 +22,15 @@ setTimeout(function () {
 // AOS ANIMATION
 // ==============================
 
-AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100
-});
+try {
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+} catch (e) {
+    console.warn('AOS failed to load:', e);
+}
 
 
 // ==============================
