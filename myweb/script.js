@@ -2,18 +2,23 @@
 // LOADER
 // ==============================
 
-// Hide loader after 2s — runs immediately, doesn't wait for CDN resources
+// Hide loader after 2s — completely remove from DOM
 setTimeout(function () {
     var loaderEl = document.querySelector('.loader');
-    if (loaderEl) loaderEl.classList.add('hidden');
-    document.body.classList.remove('loading');
+    if (loaderEl) {
+        loaderEl.classList.add('hidden');
+        setTimeout(function () {
+            if (loaderEl.parentNode) loaderEl.parentNode.removeChild(loaderEl);
+        }, 600);
+    }
+    document.body.style.overflow = '';
 }, 2000);
 
-// Hard fallback — force hide after 4s no matter what
+// Hard fallback — force remove after 4s no matter what
 setTimeout(function () {
     var loaderEl = document.querySelector('.loader');
-    if (loaderEl) loaderEl.style.display = 'none';
-    document.body.classList.remove('loading');
+    if (loaderEl && loaderEl.parentNode) loaderEl.parentNode.removeChild(loaderEl);
+    document.body.style.overflow = '';
 }, 4000);
 
 
