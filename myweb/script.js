@@ -27,7 +27,7 @@ AOS.init({
 // ==============================
 
 const hamburger = document.getElementById('hamburger');
-const navLinks  = document.querySelector('.nav-links');
+const navLinks = document.querySelector('.nav-links');
 
 if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
@@ -62,11 +62,11 @@ function showToast(message, type = "success") {
         <span class="toast-message">${message}</span>
     `;
     toastContainer.appendChild(toast);
-    
+
     // Force reflow
     toast.offsetHeight;
     toast.classList.add("show");
-    
+
     setTimeout(() => {
         toast.classList.remove("show");
         toast.addEventListener("transitionend", () => {
@@ -103,7 +103,7 @@ if (contactForm) {
             serviceId: EMAILJS_SERVICE_ID,
             templateId: EMAILJS_TEMPLATE_ID
         });
-        
+
         // Live EmailJS send
         emailjs.send(
             EMAILJS_SERVICE_ID,
@@ -487,16 +487,16 @@ const repoContainer = document.getElementById("repo-container");
 
 async function fetchGitHubRepos() {
     if (!repoContainer) return;
-    
+
     try {
         const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`);
         if (!response.ok) {
             throw new Error("Failed to fetch repositories");
         }
-        
+
         const repos = await response.json();
         repoContainer.innerHTML = "";
-        
+
         if (repos.length === 0) {
             repoContainer.innerHTML = `
                 <div class="no-repos" data-aos="fade-up">
@@ -508,14 +508,14 @@ async function fetchGitHubRepos() {
             `;
             return;
         }
-        
+
         repos.forEach((repo, index) => {
             const delay = (index + 1) * 100;
             const repoCard = document.createElement("div");
             repoCard.classList.add("repo-card");
             repoCard.setAttribute("data-aos", "fade-up");
             repoCard.setAttribute("data-aos-delay", delay);
-            
+
             repoCard.innerHTML = `
                 <div>
                     <div class="repo-header">
@@ -531,12 +531,12 @@ async function fetchGitHubRepos() {
             `;
             repoContainer.appendChild(repoCard);
         });
-        
+
         // Re-initialize AOS if it's already loaded to pick up dynamic elements
         if (window.AOS) {
             AOS.refresh();
         }
-        
+
     } catch (error) {
         console.error("Error fetching GitHub repos:", error);
         repoContainer.innerHTML = "<p class='repo-error'>Could not load repositories. Please try again later.</p>";
