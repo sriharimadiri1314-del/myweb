@@ -434,7 +434,7 @@ window.addEventListener(
 const sections =
     document.querySelectorAll("section");
 
-const navLinks =
+const navLinkItems =
     document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
@@ -455,7 +455,7 @@ window.addEventListener("scroll", () => {
         }
     });
 
-    navLinks.forEach(link => {
+    navLinkItems.forEach(link => {
 
         link.classList.remove("active");
 
