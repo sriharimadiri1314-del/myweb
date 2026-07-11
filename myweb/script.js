@@ -1,4 +1,17 @@
 // ==============================
+// LOADER
+// ==============================
+
+window.addEventListener('load', () => {
+    const loaderEl = document.querySelector('.loader');
+    // Wait for the 2s CSS animation to finish, then fade out
+    setTimeout(() => {
+        if (loaderEl) loaderEl.classList.add('hidden');
+        document.body.classList.remove('loading');
+    }, 2200);
+});
+
+// ==============================
 // AOS ANIMATION
 // ==============================
 
@@ -7,6 +20,7 @@ AOS.init({
     once: true,
     offset: 100
 });
+
 
 // ==============================
 // HAMBURGER MENU
