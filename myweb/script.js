@@ -37,7 +37,7 @@ try {
     console.warn('AOS failed to load:', e);
 }
 
-// AOS fallback: force-show all hidden elements after 1s
+// AOS fallback: force-show all hidden elements after 500ms
 // (in case AOS CDN failed or is slow)
 setTimeout(function () {
     document.querySelectorAll('[data-aos]').forEach(function (el) {
@@ -46,7 +46,7 @@ setTimeout(function () {
         el.style.transform = 'none';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
-}, 1000);
+}, 500);
 
 
 
