@@ -2,14 +2,21 @@
 // LOADER
 // ==============================
 
-window.addEventListener('load', () => {
-    const loaderEl = document.querySelector('.loader');
-    // Wait for the 2s CSS animation to finish, then fade out
-    setTimeout(() => {
-        if (loaderEl) loaderEl.classList.add('hidden');
-        document.body.classList.remove('loading');
-    }, 2200);
-});
+// Hide loader after 2s — runs immediately, doesn't wait for CDN resources
+setTimeout(function () {
+    var loaderEl = document.querySelector('.loader');
+    if (loaderEl) loaderEl.classList.add('hidden');
+    document.body.classList.remove('loading');
+}, 2000);
+
+// Hard fallback — force hide after 4s no matter what
+setTimeout(function () {
+    var loaderEl = document.querySelector('.loader');
+    if (loaderEl) loaderEl.style.display = 'none';
+    document.body.classList.remove('loading');
+}, 4000);
+
+
 
 // ==============================
 // AOS ANIMATION
