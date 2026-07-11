@@ -869,10 +869,79 @@ footer {
 }
 
 /* ==========================
-   RESPONSIVE
+   HAMBURGER MENU
 ========================== */
 
-@media(max-width:992px) {
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    width: 36px;
+    height: 36px;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav overlay */
+.nav-links.mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(7, 11, 22, 0.97);
+    backdrop-filter: blur(20px);
+    padding: 20px 0 30px;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    animation: slideDown 0.3s ease;
+}
+
+.nav-links.mobile-open li a {
+    display: block;
+    padding: 15px 10%;
+    font-size: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================
+   RESPONSIVE — 992px (Tablet)
+========================== */
+
+@media (max-width: 992px) {
 
     .hero {
         flex-direction: column-reverse;
@@ -928,16 +997,239 @@ footer {
         display: none;
     }
 
+    .hamburger {
+        display: flex;
+    }
+
+    .hire-btn {
+        display: none;
+    }
+
     .hero h1 {
-        font-size: 36px;
+        font-size: 40px;
     }
 
     .section-title h2 {
-        font-size: 32px;
+        font-size: 34px;
     }
 
     .contact-left h2 {
-        font-size: 32px;
+        font-size: 34px;
+    }
+
+    .social-dock {
+        display: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================
+   RESPONSIVE — 768px (Mobile)
+========================== */
+
+@media (max-width: 768px) {
+
+    section {
+        padding: 80px 6%;
+    }
+
+    .navbar {
+        padding: 15px 6%;
+    }
+
+    .hero {
+        padding-top: 120px;
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-image {
+        width: 240px;
+        height: 240px;
+    }
+
+    .orbit1 {
+        width: 280px;
+        height: 280px;
+        top: -20px;
+        left: -20px;
+    }
+
+    .orbit2 {
+        width: 320px;
+        height: 320px;
+        top: -40px;
+        left: -40px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 16px 25px;
+    }
+
+    .section-title {
+        margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .about-card {
+        padding: 25px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .stat-box {
+        padding: 25px;
+    }
+
+    .stat-box h2 {
+        font-size: 36px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .skill-card {
+        padding: 25px 15px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-image {
+        height: 180px;
+        font-size: 60px;
+    }
+
+    .contact {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-left h2 {
+        font-size: 28px;
+    }
+
+    .cta {
+        padding: 60px 6%;
+    }
+
+    .cta h2 {
+        font-size: 26px;
+    }
+
+    .logo h2 {
+        font-size: 16px;
+    }
+
+    .logo-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .certificate-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        padding: 0;
+    }
+}
+
+/* ==========================
+   RESPONSIVE — 480px (Small Mobile)
+========================== */
+
+@media (max-width: 480px) {
+
+    section {
+        padding: 60px 5%;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .typing-text {
+        font-size: 18px;
+    }
+
+    .hero-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .orbit1 {
+        width: 240px;
+        height: 240px;
+        top: -20px;
+        left: -20px;
+    }
+
+    .orbit2 {
+        width: 280px;
+        height: 280px;
+        top: -40px;
+        left: -40px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-box h2 {
+        font-size: 30px;
+    }
+
+    .section-title h2 {
+        font-size: 24px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .loader h1 {
+        font-size: 40px;
+    }
+
+    .toast {
+        min-width: unset;
+        max-width: 90vw;
+        right: 5%;
+    }
+
+    .toast-container {
+        right: 5%;
+        left: 5%;
     }
 }
 
