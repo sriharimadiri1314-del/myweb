@@ -1,48 +1,47 @@
 // ==============================
-// LOADER
+// LOADER + ANIMATION SEQUENCE
 // ==============================
 
-// Hide loader after 2s — completely remove from DOM
+// Step 1: Hide loader at 2s (gold bar animation completes)
 setTimeout(function () {
     var loaderEl = document.querySelector('.loader');
     if (loaderEl) {
         loaderEl.classList.add('hidden');
+        // Step 2: Remove loader from DOM after fade (0.5s)
         setTimeout(function () {
             if (loaderEl.parentNode) loaderEl.parentNode.removeChild(loaderEl);
-        }, 600);
+        }, 500);
     }
     document.body.style.overflow = '';
 }, 2000);
 
-// Hard fallback — force remove after 4s no matter what
+// Step 3: Init AOS AFTER loader is gone so hero animations are visible
+setTimeout(function () {
+    try {
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 50,
+            easing: 'ease-out-cubic'
+        });
+    } catch (e) {
+        // AOS failed — force-show all elements
+        document.querySelectorAll('[data-aos]').forEach(function (el) {
+            el.classList.add('aos-animate');
+        });
+    }
+}, 2600);
+
+// Hard fallback — force remove loader after 4s
 setTimeout(function () {
     var loaderEl = document.querySelector('.loader');
     if (loaderEl && loaderEl.parentNode) loaderEl.parentNode.removeChild(loaderEl);
     document.body.style.overflow = '';
-}, 4000);
-
-
-
-// ==============================
-// AOS ANIMATION
-// ==============================
-
-try {
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-    });
-} catch (e) {
-    console.warn('AOS failed to load:', e);
-}
-
-// Last-resort fallback only: force-show after 8s if AOS truly failed
-setTimeout(function () {
+    // Also force-show any elements AOS missed
     document.querySelectorAll('[data-aos]:not(.aos-animate)').forEach(function (el) {
         el.classList.add('aos-animate');
     });
-}, 8000);
+}, 4000);
 
 
 
