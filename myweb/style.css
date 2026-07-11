@@ -214,7 +214,8 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 60px;
+    gap: 40px;
+    overflow: hidden;
 }
 
 .hero-content {
@@ -935,6 +936,41 @@ footer {
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================
+   RESPONSIVE — 1200px (Large Tablet / Narrow Desktop)
+========================== */
+
+@media (max-width: 1200px) {
+
+    .hero-image {
+        width: 340px;
+        height: 340px;
+        flex-shrink: 0;
+    }
+
+    .orbit1 {
+        width: 390px;
+        height: 390px;
+        top: -25px;
+        left: -25px;
+    }
+
+    .orbit2 {
+        width: 450px;
+        height: 450px;
+        top: -55px;
+        left: -55px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .hero-content {
+        max-width: 500px;
+    }
 }
 
 /* ==========================
