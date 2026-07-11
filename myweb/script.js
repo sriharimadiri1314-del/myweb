@@ -37,16 +37,13 @@ try {
     console.warn('AOS failed to load:', e);
 }
 
-// AOS fallback: force-show all hidden elements after 500ms
-// (in case AOS CDN failed or is slow)
+// Last-resort fallback only: force-show after 8s if AOS truly failed
 setTimeout(function () {
-    document.querySelectorAll('[data-aos]').forEach(function (el) {
+    document.querySelectorAll('[data-aos]:not(.aos-animate)').forEach(function (el) {
         el.classList.add('aos-animate');
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
-}, 500);
+}, 8000);
+
 
 
 
