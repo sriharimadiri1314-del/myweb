@@ -292,20 +292,41 @@ particlesJS("particles-js", {
 });
 const themeToggle = document.getElementById("theme-toggle");
 
-// Restore saved theme on load
-if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light-theme');
-    if (themeToggle) themeToggle.textContent = "☀️";
+// Colors for each theme
+var DARK_BG  = '#070B16';
+var LIGHT_BG = '#f8fafc';
+
+function setParticlesBg(color) {
+    var canvas = document.querySelector('#particles-js canvas');
+    if (canvas) canvas.style.backgroundColor = color;
 }
+
+function applyTheme(isLight) {
+    if (isLight) {
+        document.body.classList.add('light-theme');
+        if (themeToggle) themeToggle.textContent = "☀️";
+        setParticlesBg(LIGHT_BG);
+    } else {
+        document.body.classList.remove('light-theme');
+        if (themeToggle) themeToggle.textContent = "🌙";
+        setParticlesBg(DARK_BG);
+    }
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+
+// Restore saved theme — wait for particles to init first
+setTimeout(function () {
+    var saved = localStorage.getItem('theme');
+    applyTheme(saved === 'light');
+}, 200);
 
 if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("light-theme");
-        const isLight = document.body.classList.contains("light-theme");
-        themeToggle.textContent = isLight ? "☀️" : "🌙";
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        var isLight = !document.body.classList.contains("light-theme");
+        applyTheme(isLight);
     });
 }
+
 
 // ==============================
 // NAVBAR SCROLL EFFECT
