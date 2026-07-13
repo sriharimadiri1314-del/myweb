@@ -94,6 +94,7 @@ body {
     color: var(--white);
     overflow-x: hidden;
     position: relative;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 body.loading {
@@ -126,6 +127,11 @@ section {
     top: 0;
     left: 0;
     z-index: 0;
+    background: transparent;
+}
+
+#particles-js canvas {
+    background: transparent !important;
 }
 
 /* ==========================

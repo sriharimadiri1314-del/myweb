@@ -291,14 +291,21 @@ particlesJS("particles-js", {
     retina_detect: true
 });
 const themeToggle = document.getElementById("theme-toggle");
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light-theme");
-    if (document.body.classList.contains("light-theme")) {
-        themeToggle.textContent = "☀️";
-    } else {
-        themeToggle.textContent = "🌙";
-    }
-});
+
+// Restore saved theme on load
+if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light-theme');
+    if (themeToggle) themeToggle.textContent = "☀️";
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+        const isLight = document.body.classList.contains("light-theme");
+        themeToggle.textContent = isLight ? "☀️" : "🌙";
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+}
 
 // ==============================
 // NAVBAR SCROLL EFFECT
