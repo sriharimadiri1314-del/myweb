@@ -105,9 +105,11 @@ const EMAILJS_SERVICE_ID = "service_k6oz9cu";
 const EMAILJS_TEMPLATE_ID = "template_yylumol";
 
 // Initialize EmailJS with v4 options object
-emailjs.init({
-    publicKey: EMAILJS_PUBLIC_KEY
-});
+try {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+} catch(e) {
+    console.warn('EmailJS init failed:', e);
+}
 
 const contactForm = document.querySelector("form");
 if (contactForm) {
