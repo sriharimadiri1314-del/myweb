@@ -13,7 +13,7 @@ setTimeout(function () {
         }, 500);
     }
     document.body.style.overflow = '';
-}, 2000);
+}, 1200);
 
 // Step 3: Init AOS AFTER loader is gone so hero animations are visible
 setTimeout(function () {
@@ -30,7 +30,7 @@ setTimeout(function () {
             el.classList.add('aos-animate');
         });
     }
-}, 2600);
+}, 1800);
 
 // Hard fallback — force remove loader after 4s
 setTimeout(function () {

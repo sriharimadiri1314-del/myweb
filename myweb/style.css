@@ -22,8 +22,8 @@
     justify-content: center;
     align-items: center;
     z-index: 999999;
-    /* Auto-hide after 2s via CSS — works even if JS fails */
-    animation: loaderHide 0.5s ease 2s forwards;
+    /* Auto-hide after 1.2s via CSS */
+    animation: loaderHide 0.5s ease 1.2s forwards;
 }
 
 @keyframes loaderHide {
@@ -52,7 +52,7 @@
     height: 3px;
     width: 0;
     background: #d4af37;
-    animation: load 2s linear forwards;
+    animation: load 1.2s linear forwards;
 }
 
 @keyframes load {
@@ -89,7 +89,7 @@ body.light-theme {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
     background: var(--bg);
     color: var(--white);
     overflow-x: hidden;
@@ -247,7 +247,7 @@ section {
 .hero h1 {
     font-size: 54px;
     line-height: 1.2;
-    font-family: 'Playfair Display', serif;
+    font-family: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
 }
 
 .hero h1 span {
@@ -407,7 +407,7 @@ section {
 .section-title h2 {
     margin-top: 15px;
     font-size: 42px;
-    font-family: 'Playfair Display', serif;
+    font-family: Georgia, 'Palatino Linotype', Palatino, serif;
 }
 
 .section-title h2 span {
@@ -751,7 +751,7 @@ section {
 .contact-left h2 {
     font-size: 42px;
     margin: 20px 0;
-    font-family: 'Playfair Display', serif;
+    font-family: Georgia, 'Palatino Linotype', Palatino, serif;
 }
 
 .contact-left h2 span {
