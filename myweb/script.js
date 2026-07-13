@@ -19,9 +19,9 @@ setTimeout(function () {
 setTimeout(function () {
     try {
         AOS.init({
-            duration: 900,
+            duration: 500,
             once: true,
-            offset: 50,
+            offset: 30,
             easing: 'ease-out-cubic'
         });
     } catch (e) {
